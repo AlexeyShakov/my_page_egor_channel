@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{#for connecting with .css files#}
+{% load static %}
+
+
+{% block css_additional  %}
+{#rel=stylesheet means .css file#}
+{#by default django seeks static files in static folder, so it's the reason why we've called it so#}
+ <link rel="stylesheet" href="{% static 'horoscope/css/index.css' %}">
+{% endblock %}
+
+{% block title  %}
+    Меню
+{% endblock %}
+
+{% block content %}
+    {% include "includes/navbar.html" %}
+    <h2>Content from index.html</h2>
+    <ul>
+    {% for zodiac in zodiacs %}
+        <li> <a href="{% url 'horoscope-name' zodiac_sign=zodiac %}">{{ zodiac|capfirst }}</a> </li>
+    {%  endfor %}
+    </ul>
+    {% include "includes/navbar.html" %}
+{% endblock %}
