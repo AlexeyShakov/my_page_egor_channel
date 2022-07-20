@@ -15,12 +15,10 @@
 {% endblock %}
 
 {% block content %}
-    {% include "includes/navbar.html" %}
-    <h2>Content from index.html</h2>
+    <h1>Приложение гороскоп</h1>
     <ul>
     {% for zodiac in zodiacs %}
         <li> <a href="{% url 'horoscope-name' zodiac_sign=zodiac %}">{{ zodiac|capfirst }}</a> </li>
     {%  endfor %}
     </ul>
-    {% include "includes/navbar.html" %}
 {% endblock %}

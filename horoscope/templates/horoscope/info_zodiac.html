@@ -2,6 +2,9 @@
 
 {% load static %}
 
+{#importing filter created by us#}
+{% load my_filter %}
+
 {% block css_additional  %}
 {#rel=stylesheet means .css file#}
 {#by default django seeks static files in static folder, so it's the reason why we've called it so#}
@@ -14,7 +17,8 @@
 
 {% block content %}
     {% include "includes/navbar.html" %}
-    <h2>Content from info_zodiac.html</h2>
+{#    getting the sign name by using self-made filter "split" and default filter "first"#}
+    <h1>{{ zodiac_description|split|first }}</h1>
     {% if zodiac_description is None %}
         <h2>Неправильный знак зодиака - {{ sign|capfirst }}</h2>
     {% else  %}
